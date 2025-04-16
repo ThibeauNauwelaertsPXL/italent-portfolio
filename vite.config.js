@@ -4,7 +4,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
   plugins: [vue()],
-  base: '/italent-portfolio/', // Changed to relative path format for GitHub Pages
+  base: './', // Use relative paths instead of absolute paths
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -12,9 +12,14 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
+    assetsDir: 'assets',
+    emptyOutDir: true,
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        manualChunks: undefined,
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]'
       }
     }
   }

@@ -4,7 +4,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
   plugins: [vue()],
-  base: 'https://thibeaunauwelaertspxl.github.io/italent-portfolio/', // Aangepast naar de juiste URL (let op: lowercase)
+  base: '/italent-portfolio/', // Changed to relative path format for GitHub Pages
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

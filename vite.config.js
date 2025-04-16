@@ -1,22 +1,20 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
+import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
   plugins: [vue()],
-  base: '/ITalentPortfolio/',
+  base: './',
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
-      'vue': 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
   build: {
+    outDir: 'dist',
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor': ['vue', 'vue-router']
-        }
+        manualChunks: undefined
       }
     }
   }
